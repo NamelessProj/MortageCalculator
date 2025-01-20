@@ -1,0 +1,2 @@
+# Mortgage Calculator
+This is a simple mortgage calculator that calculates the monthly payment of a mortgage based on the principal, interest rate and years of the loan. The calculator also shows the total amount paid over the life of the loan.
