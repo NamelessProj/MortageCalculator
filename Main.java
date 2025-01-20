@@ -8,6 +8,18 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
 
+        int principal = getPrincipal(scanner);
+
+        float monthlyInterest = getMonthlyInterest(scanner, PERCENT, MONTHS_IN_YEAR);
+
+        int numberOfPayments = getNumberOfPayments(scanner, MONTHS_IN_YEAR);
+
+        double mortgage = getMortgage(monthlyInterest, numberOfPayments, principal);
+
+        System.out.println("Mortgage: " + NumberFormat.getCurrencyInstance().format(mortgage));
+    }
+
+    public static int getPrincipal(Scanner scanner) {
         int principal;
         while (true) {
             System.out.print("Principal ($1K - $1M): ");
@@ -16,7 +28,10 @@ public class Main {
                 break;
             System.out.println("Enter a value between 1,000 and 1,000,000.");
         }
+        return principal;
+    }
 
+    public static float getMonthlyInterest(Scanner scanner, final byte PERCENT, final byte MONTHS_IN_YEAR) {
         String annualInterestString;
         float annualInterest;
         while (true) {
@@ -27,8 +42,10 @@ public class Main {
                 break;
             System.out.println("Enter a value greater than 0 and less than or equal to 30.");
         }
-        float monthlyInterest = annualInterest / PERCENT / MONTHS_IN_YEAR;
+        return annualInterest / PERCENT / MONTHS_IN_YEAR;
+    }
 
+    public static int getNumberOfPayments(Scanner scanner, final byte MONTHS_IN_YEAR) {
         byte years;
         while (true) {
             System.out.print("Period (Years): ");
@@ -37,12 +54,12 @@ public class Main {
                 break;
             System.out.println("Enter a value between 1 and 30.");
         }
-        int numberOfPayments = years * MONTHS_IN_YEAR;
+        return years * MONTHS_IN_YEAR;
+    }
 
+    public static double getMortgage(float monthlyInterest, int numberOfPayments, int principal) {
         double part1 = monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments);
         double part2 = Math.pow(1 + monthlyInterest, numberOfPayments) - 1;
-        double mortgage = principal * part1 / part2;
-
-        System.out.println("Mortgage: " + NumberFormat.getCurrencyInstance().format(mortgage));
+        return principal * part1 / part2;
     }
 }
