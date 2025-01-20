@@ -1,4 +1,5 @@
 import java.text.NumberFormat;
+import java.util.Currency;
 import java.util.Scanner;
 
 public class Main {
@@ -21,8 +22,9 @@ public class Main {
 
     public static int getPrincipal(Scanner scanner) {
         int principal;
+        Currency currency = NumberFormat.getCurrencyInstance().getCurrency();
         while (true) {
-            System.out.print("Principal ($1K - $1M): ");
+            System.out.print("Principal ("+currency+" 1K - "+currency+" 1M): ");
             principal = scanner.nextInt();
             if (principal >= 1_000 && principal <= 1_000_000)
                 break;
