@@ -17,7 +17,10 @@ public class Main {
 
         double mortgage = getMortgage(monthlyInterest, numberOfPayments, principal);
 
+        double totalPayment = mortgage * numberOfPayments;
+
         System.out.println("Mortgage: " + NumberFormat.getCurrencyInstance().format(mortgage));
+        System.out.println("Total Payment: " + NumberFormat.getCurrencyInstance().format(totalPayment));
     }
 
     public static int getPrincipal(Scanner scanner) {
