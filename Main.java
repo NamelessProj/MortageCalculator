@@ -62,6 +62,6 @@ public class Main {
     public static double getMortgage(float monthlyInterest, int numberOfPayments, int principal) {
         double part1 = monthlyInterest * Math.pow(1 + monthlyInterest, numberOfPayments);
         double part2 = Math.pow(1 + monthlyInterest, numberOfPayments) - 1;
-        return principal * part1 / part2;
+        return principal * (part1 / part2);
     }
 }
