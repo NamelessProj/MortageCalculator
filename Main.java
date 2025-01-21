@@ -37,12 +37,10 @@ public class Main {
     }
 
     public static float getMonthlyInterest(Scanner scanner, final byte PERCENT, final byte MONTHS_IN_YEAR) {
-        String annualInterestString;
         float annualInterest;
         while (true) {
             System.out.print("Annual Interest Rate: ");
-            annualInterestString = scanner.next();
-            annualInterest = Float.parseFloat(annualInterestString);
+            annualInterest = scanner.nextFloat();
             if (annualInterest >= 1 && annualInterest <= 30)
                 break;
             System.out.println("Enter a value greater than 0 and less than or equal to 30.");
